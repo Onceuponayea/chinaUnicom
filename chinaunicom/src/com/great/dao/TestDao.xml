@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.great.dao.TestDao">
+
+<insert id="addEmp" parameterType="com.great.entity.Emp">
+ 	insert into tbl_emp (job_num,emp_name,emp_pwd,pay_pwd,emp_phone,emp_sex,entry_time,emp_stateid,netpoint_id) 
+ 	values(#{job_num},#{emp_name},#{emp_pwd},#{pay_pwd},#{emp_phone},#{emp_sex},#{entry_time},#{emp_stateid},#{netpoint_id})
+</insert>
+
+<delete id="deleteEmp" parameterType="java.lang.Integer">
+	delete from tbl_emp where emp_id = #{_parameter}
+</delete>
+
+
+</mapper>
