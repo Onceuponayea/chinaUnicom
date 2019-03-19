@@ -33,7 +33,7 @@ public class HomeController {
 	@RequestMapping("/hello.action")
 	@MyLog(operation="hello")
 	public String hello(){
-		dao.addEmp(new Emp(null,"10000","张三","123456","1231",null,null,null,null,null));
+		dao.addEmp(new Emp(null,"10000","张三","123456","1231",null,null,null,null,null,null));
 		System.out.println("welcome!!!!");
 		System.out.println(session.getAttribute("imageCode")+"验证码");
 		if(session.getAttribute("imageCode")==null){
