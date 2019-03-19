@@ -3,14 +3,27 @@
 "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 <mapper namespace="com.great.dao.TestDao">
 
-<insert id="addEmp" parameterType="com.great.entity.Emp">
- 	insert into tbl_emp (job_num,emp_name,emp_pwd,pay_pwd,emp_phone,emp_sex,entry_time,emp_stateid,netpoint_id) 
- 	values(#{job_num},#{emp_name},#{emp_pwd},#{pay_pwd},#{emp_phone},#{emp_sex},#{entry_time},#{emp_stateid},#{netpoint_id})
+
+
+<insert id="addConsumrecord" parameterType="com.great.entity.Consumrecord">   <!-- 账单表的增加 -->
+insert into tbl_consumrecord (consum_id,mainphone_number,sidephone_number,consum_time,operation_name,consum_flow,consum_money,pay_mode,operation_people)
+ values (#{consum_id},#{mainphone_number},#{sidephone_number},#{consum_time},#{operation_name},#{consum_flow},#{consum_money},#{pay_mode},#{operation_people}) 
+
 </insert>
 
-<delete id="deleteEmp" parameterType="java.lang.Integer">
-	delete from tbl_emp where emp_id = #{_parameter}
+<delete id="deleteLastInfo" parameterType="java.lang.Integer">   <!-- 通过id删除 -->
+delete from tbl_consumrecord where consum_id=#{arg0}
 </delete>
+
+<update id="updateInfo" parameterType="com.great.entity.Consumrecord">
+update tbl_consumrecord set mainphone_number=#{mainphone_number},sidephone_number=#{sidephone_number},consum_time=#{consum_time},
+operation_name=#{operation_name},consum_flow=#{consum_flow},consum_money=#{consum_money},pay_mode=#{pay_mode},operation_people=#{operation_people} where 
+consum_id = #{consum_id}
+</update>
+
+<select id="findAll" resultType="com.great.entity.Consumrecord">   <!-- 查询所有 -->
+select * from tbl_consumrecord
+</select>
 
 
 </mapper>
